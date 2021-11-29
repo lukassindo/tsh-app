@@ -107,6 +107,26 @@ header a.btn.btn-outline-primary {
   max-height: 180px;
   object-fit: cover;
 }
+.not_active .card-img-top {
+  filter: grayscale(1);
+}
+.promo.card:before {
+  content: 'Promo';
+  position: absolute;
+  width: 75px;
+  height: 24px;
+  background: orange;
+  color: #fff;
+  font-size: 0.8rem;
+  text-align: center;
+  top: 1rem;
+  line-height: 23px;
+}
+.card.not_active button {
+  filter: greyscale(1);
+  background-color: grey !important;
+  border-color: grey;
+}
 .card-title {font-weight: 600 !important;}
 .card-text {
   font-size: 0.9rem;

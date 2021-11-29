@@ -7,7 +7,7 @@ import star from '../../img/star.svg';
 import emptystar from '../../img/emptystar.svg';
 import Modal from 'react-bootstrap/Modal';
 
-const ProductCard = ({description, image, name, rating}: Product) => {
+const ProductCard = ({active, promo, description, image, name, rating}: Product) => {
     const [stars, setStars] = useState<string[]>([])
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -28,7 +28,7 @@ const ProductCard = ({description, image, name, rating}: Product) => {
 
     return (
         <>
-        <Card className="mb-4">
+        <Card className={`mb-4 ${!active ? "not_active" : ""} ${promo ? "promo" : ""}`}>
             <Card.Img variant="top" src={image} alt={name}/>
             <div className="p-3 d-flex flex-column justify-content-between h-100">
                 <div>
@@ -39,7 +39,7 @@ const ProductCard = ({description, image, name, rating}: Product) => {
                     <div className="rating">
                         {stars.map((star, id)=><Image key={id} className="px-1 pb-2" src={star}/>)}
                     </div>
-                    <Button variant="primary" onClick={handleShow}>Show details</Button>
+                    <Button className="w-100" disabled={!active} variant="primary" onClick={handleShow}>{!active ? 'Unavailable' : 'Show details'} </Button>
                 </div>
             </div>
         </Card>
